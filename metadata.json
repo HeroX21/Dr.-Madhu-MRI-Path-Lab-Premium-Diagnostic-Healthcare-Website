@@ -1,0 +1,7 @@
+{
+  "name": "Dr. Madhu MRI Path Lab | North Delhi Diagnostic Centre",
+  "description": "Trusted 24×7 diagnostic imaging & pathology centre in North Delhi near GTB Nagar Metro Station. Advanced MRI, CT Scan, Ultrasound, Digital X-Ray, Mammography, FibroScan & Pathology lab.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
+

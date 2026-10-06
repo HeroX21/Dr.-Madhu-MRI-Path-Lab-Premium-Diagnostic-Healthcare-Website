@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <script>
+      /* Ensure window.fetch has both getter and setter so browser extensions can monkey-patch without throwing TypeError */
+      (function() {
+        try {
+          var originalFetch = window.fetch;
+          Object.defineProperty(window, 'fetch', {
+            configurable: true,
+            enumerable: true,
+            get: function() {
+              return originalFetch;
+            },
+            set: function(fn) {
+              originalFetch = fn;
+            }
+          });
+        } catch (e) {
+          try {
+            if (typeof Window !== 'undefined' && Window.prototype) {
+              var protoFetch = Window.prototype.fetch || window.fetch;
+              Object.defineProperty(Window.prototype, 'fetch', {
+                configurable: true,
+                enumerable: true,
+                get: function() {
+                  return protoFetch;
+                },
+                set: function(fn) {
+                  protoFetch = fn;
+                }
+              });
+            }
+          } catch (err) {}
+        }
+
+        // Suppress unhandled errors from external chrome extensions
+        window.addEventListener('error', function(event) {
+          if (event && event.filename && event.filename.indexOf('chrome-extension://') !== -1) {
+            event.preventDefault();
+            return true;
+          }
+        }, true);
+      })();
+    </script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dr. Madhu MRI Path Lab | North Delhi Diagnostic Centre</title>
+    <meta name="description" content="Trusted 24×7 diagnostic imaging & pathology centre in North Delhi near GTB Nagar Metro Station. Advanced MRI, CT Scan, Ultrasound, Digital X-Ray, Mammography, FibroScan & Pathology lab." />
+    <meta name="keywords" content="Dr Madhu MRI Path Lab, MRI Delhi, CT Scan North Delhi, Pathology Lab GTB Nagar, Ultrasound Delhi, Mammography Delhi, FibroScan Delhi, X-Ray Delhi, 24x7 Diagnostic Centre Delhi" />
+    <meta name="author" content="Dr. Madhu MRI Path Lab" />
+    <meta property="og:title" content="Dr. Madhu MRI Path Lab | North Delhi Diagnostic Centre" />
+    <meta property="og:description" content="Trusted 24×7 diagnostic imaging & pathology centre in North Delhi near GTB Nagar Metro Station. Advanced MRI, CT Scan, Ultrasound, Digital X-Ray, Mammography, FibroScan & Pathology lab." />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "DiagnosticLab",
+      "name": "Dr. Madhu MRI Path Lab",
+      "image": "https://content.jdmagicbox.com/v2/comp/delhi/n9/011pxx11.xx11.161205130735.z2n9/catalogue/dr-madhu-mri-path-lab-gtb-nagar-delhi-pathology-labs-nyw3xi.jpg",
+      "telephone": "+919811084727",
+      "email": "drmadhusclinic@gmail.com",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "34–36, Mall Road, Near GTB Nagar Metro Station (Gate No. 3)",
+        "addressLocality": "New Delhi",
+        "postalCode": "110033",
+        "addressCountry": "IN"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 28.6978,
+        "longitude": 77.2073
+      },
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday",
+            "Saturday",
+            "Sunday"
+          ],
+          "opens": "00:00",
+          "closes": "23:59"
+        }
+      ],
+      "medicalSpecialty": [
+        "Radiology",
+        "Pathology",
+        "DiagnosticRadiology"
+      ],
+      "availableService": [
+        "MRI Scan",
+        "CT Scan",
+        "Ultrasound & Doppler",
+        "Digital Mammography",
+        "Pathology Laboratory Tests",
+        "FibroScan",
+        "Digital X-Ray",
+        "24x7 Emergency Diagnostics",
+        "Preventive Health Checkups"
+      ]
+    }
+    </script>
+  </head>
+  <body class="bg-slate-50 text-slate-900 font-sans antialiased selection:bg-cyan-500 selection:text-white">
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
+
